@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Gilroy-Light";
+  src: url("https://db.onlinewebfonts.com/t/0744a43ed7aac352ec78c1404c890d72.eot");
+  src: url("https://db.onlinewebfonts.com/t/0744a43ed7aac352ec78c1404c890d72.eot?#iefix") format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/0744a43ed7aac352ec78c1404c890d72.woff2") format("woff2"),
+    url("https://db.onlinewebfonts.com/t/0744a43ed7aac352ec78c1404c890d72.woff") format("woff"),
+    url("https://db.onlinewebfonts.com/t/0744a43ed7aac352ec78c1404c890d72.ttf") format("truetype"),
+    url("https://db.onlinewebfonts.com/t/0744a43ed7aac352ec78c1404c890d72.svg#Gilroy-Light") format("svg");
+}
+
+@font-face {
+  font-family: "Gilroy-Medium";
+  src: url("https://db.onlinewebfonts.com/t/040a78b437acd0433612f92e61d04a1b.eot");
+  src: url("https://db.onlinewebfonts.com/t/040a78b437acd0433612f92e61d04a1b.eot?#iefix") format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/040a78b437acd0433612f92e61d04a1b.woff2") format("woff2"),
+    url("https://db.onlinewebfonts.com/t/040a78b437acd0433612f92e61d04a1b.woff") format("woff"),
+    url("https://db.onlinewebfonts.com/t/040a78b437acd0433612f92e61d04a1b.ttf") format("truetype"),
+    url("https://db.onlinewebfonts.com/t/040a78b437acd0433612f92e61d04a1b.svg#Gilroy-Medium") format("svg");
+}
+
+@font-face {
+  font-family: "Gilroy-Regular";
+  src: url("https://db.onlinewebfonts.com/t/1dc8ecd8056a5ea7aa7de1db42b5b639.eot");
+  src: url("https://db.onlinewebfonts.com/t/1dc8ecd8056a5ea7aa7de1db42b5b639.eot?#iefix") format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/1dc8ecd8056a5ea7aa7de1db42b5b639.woff2") format("woff2"),
+    url("https://db.onlinewebfonts.com/t/1dc8ecd8056a5ea7aa7de1db42b5b639.woff") format("woff"),
+    url("https://db.onlinewebfonts.com/t/1dc8ecd8056a5ea7aa7de1db42b5b639.ttf") format("truetype"),
+    url("https://db.onlinewebfonts.com/t/1dc8ecd8056a5ea7aa7de1db42b5b639.svg#Gilroy-Regular") format("svg");
+}
+
+@font-face {
+  font-family: "Gilroy-SemiBold";
+  src: url("https://db.onlinewebfonts.com/t/000833a3a58fb083c44b9de42c2ff0a2.eot");
+  src: url("https://db.onlinewebfonts.com/t/000833a3a58fb083c44b9de42c2ff0a2.eot?#iefix") format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/000833a3a58fb083c44b9de42c2ff0a2.woff2") format("woff2"),
+    url("https://db.onlinewebfonts.com/t/000833a3a58fb083c44b9de42c2ff0a2.woff") format("woff"),
+    url("https://db.onlinewebfonts.com/t/000833a3a58fb083c44b9de42c2ff0a2.ttf") format("truetype"),
+    url("https://db.onlinewebfonts.com/t/000833a3a58fb083c44b9de42c2ff0a2.svg#Gilroy-SemiBold") format("svg");
+}
+
+@font-face {
+  font-family: "Gilroy-Bold";
+  src: url("https://db.onlinewebfonts.com/t/1064f0ad1cb65fdab43bb592ddd8aa91.eot");
+  src: url("https://db.onlinewebfonts.com/t/1064f0ad1cb65fdab43bb592ddd8aa91.eot?#iefix") format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/1064f0ad1cb65fdab43bb592ddd8aa91.woff2") format("woff2"),
+    url("https://db.onlinewebfonts.com/t/1064f0ad1cb65fdab43bb592ddd8aa91.woff") format("woff"),
+    url("https://db.onlinewebfonts.com/t/1064f0ad1cb65fdab43bb592ddd8aa91.ttf") format("truetype"),
+    url("https://db.onlinewebfonts.com/t/1064f0ad1cb65fdab43bb592ddd8aa91.svg#Gilroy-Bold") format("svg");
+}
+
+.gilroy-bold {
+  font-family: "Gilroy-Bold", sans-serif;
+}
+
+.gilroy-medium {
+  font-family: "Gilroy-Medium", sans-serif;
+}
+
+.gilroy-regular {
+  font-family: "Gilroy-Regular", sans-serif;
+}
+
+.gilroy-light {
+  font-family: "Gilroy-Light", sans-serif;
+}
+
+.gilroy-semibold {
+  font-family: "Gilroy-SemiBold", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Gilroy-Regular", sans-serif;
+}

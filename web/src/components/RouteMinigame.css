@@ -1,0 +1,592 @@
+.route-minigame {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(139, 255, 115, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 100%, rgba(74, 163, 255, 0.06) 0%, transparent 50%),
+    rgba(0, 0, 0, 0.86);
+  z-index: 9999;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.route-minigame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.012) 2px,
+      rgba(255, 255, 255, 0.012) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.008) 2px,
+      rgba(255, 255, 255, 0.008) 4px
+    );
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+.route-minigame__panel {
+  position: relative;
+  width: min(72rem, 94vw);
+  height: min(42rem, 90vh);
+  background:
+    linear-gradient(145deg, rgba(22, 24, 22, 0.98) 0%, rgba(12, 13, 12, 0.99) 100%);
+  border: 1px solid rgba(139, 255, 115, 0.22);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+
+.route-minigame__panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(139, 255, 115, 0.35) 25%,
+    rgba(139, 255, 115, 0.75) 50%,
+    rgba(139, 255, 115, 0.35) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.route-minigame__panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(139, 255, 115, 0.04) 0%, transparent 42%),
+    radial-gradient(circle at 88% 82%, rgba(74, 163, 255, 0.03) 0%, transparent 38%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.route-minigame__header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 6px,
+      rgba(255, 255, 255, 0.012) 6px,
+      rgba(255, 255, 255, 0.012) 7px
+    );
+}
+
+.route-minigame__header h2 {
+  margin: 0;
+  color: #f4fff0;
+  font-size: 1.35rem;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 12px rgba(139, 255, 115, 0.15);
+}
+
+.route-minigame__header p {
+  margin: 0.35rem 0 0;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.92rem;
+  max-width: 42rem;
+}
+
+.route-minigame__urgent-text {
+  color: #ff8d8d;
+  font-weight: 700;
+}
+
+.route-minigame__progress {
+  align-self: center;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(139, 255, 115, 0.16) 0%, rgba(139, 255, 115, 0.08) 100%);
+  border: 1px solid rgba(139, 255, 115, 0.28);
+  color: #8bff73;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.route-minigame__body {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 19rem;
+  min-height: 0;
+}
+
+.route-minigame__map-wrap {
+  padding: 1rem 0 1rem 1rem;
+  min-height: 0;
+  height: 100%;
+  display: flex;
+}
+
+.route-minigame__map-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 18rem;
+  border-radius: 0.65rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #0c100c;
+  background-image:
+    radial-gradient(circle at center, rgba(139, 255, 115, 0.04) 0%, transparent 70%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.02) 0px,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 24px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.02) 0px,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 24px
+    );
+  box-shadow:
+    inset 0 0 24px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  cursor: grab;
+  touch-action: none;
+  container-type: size;
+}
+
+.route-minigame__map-viewport--dragging {
+  cursor: grabbing;
+}
+
+.route-minigame__zoom-controls {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.35rem;
+  border-radius: 0.55rem;
+  background: rgba(10, 12, 10, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.route-minigame__zoom-btn {
+  width: 1.85rem;
+  height: 1.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.4rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
+  color: #f4fff0;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.route-minigame__zoom-btn:hover {
+  background: rgba(139, 255, 115, 0.15);
+  border-color: rgba(139, 255, 115, 0.35);
+}
+
+.route-minigame__zoom-btn--reset {
+  font-size: 0.9rem;
+}
+
+.route-minigame__map-layer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  aspect-ratio: 1 / 1;
+  pointer-events: none;
+}
+
+.route-minigame__map-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  user-select: none;
+  image-rendering: auto;
+}
+
+.route-minigame__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.route-minigame__line {
+  stroke: rgba(139, 255, 115, 0.85);
+  stroke-width: 0.35;
+  stroke-linecap: round;
+}
+
+.route-minigame__line--return {
+  stroke: rgba(100, 180, 255, 0.9);
+  stroke-dasharray: 1.2 0.8;
+}
+
+/* Map markers */
+.route-minigame__marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 3;
+  pointer-events: auto;
+}
+
+.route-minigame__marker--depot {
+  cursor: default;
+}
+
+.route-minigame__marker-box {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  min-width: 1.65rem;
+  padding: 0.2rem 0.42rem;
+  border-radius: 0.35rem;
+  background:
+    linear-gradient(180deg, rgba(18, 20, 18, 0.95) 0%, rgba(10, 12, 10, 0.98) 100%);
+  border: 1.5px solid var(--marker-color, #8bff73);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.route-minigame__marker-box--depot {
+  border-color: #4aa3ff;
+  background:
+    linear-gradient(180deg, rgba(20, 32, 48, 0.95) 0%, rgba(10, 18, 28, 0.98) 100%);
+}
+
+.route-minigame__marker--urgent .route-minigame__marker-box {
+  border-color: #ff6b6b;
+  background:
+    linear-gradient(180deg, rgba(56, 18, 18, 0.96) 0%, rgba(28, 10, 10, 0.98) 100%);
+  box-shadow:
+    0 0 0 1px rgba(255, 120, 120, 0.35),
+    0 2px 10px rgba(0, 0, 0, 0.55);
+}
+
+.route-minigame__marker-urgent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+  background: #ff6b6b;
+  color: #fff;
+  font-size: 0.55rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.route-minigame__marker-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #f4fff0;
+  line-height: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.route-minigame__marker-order {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0.85rem;
+  height: 0.85rem;
+  padding: 0 0.15rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #0f100f;
+  font-size: 0.52rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.route-minigame__marker--selected .route-minigame__marker-box {
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.85),
+    0 2px 10px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.route-minigame__marker--stop:hover .route-minigame__marker-box {
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+}
+
+/* Sidebar */
+.route-minigame__sidebar {
+  padding: 1rem 1rem 1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.route-minigame__sidebar-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-right: 0.15rem;
+}
+
+.route-minigame__sidebar-footer {
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.route-minigame__card {
+  position: relative;
+  flex-shrink: 0;
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.015) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.55rem;
+  padding: 0.75rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  overflow: visible;
+}
+
+.route-minigame__card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      -30deg,
+      transparent,
+      transparent 8px,
+      rgba(255, 255, 255, 0.012) 8px,
+      rgba(255, 255, 255, 0.012) 9px
+    );
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.route-minigame__card-title {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 0.55rem;
+  color: #f4fff0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Route sequence */
+.route-minigame__sequence {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.route-minigame__sequence-list {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.38rem;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.route-minigame__sequence-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.42rem 0.5rem;
+  border-radius: 0.4rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.84rem;
+}
+
+.route-minigame__sequence-item--depot,
+.route-minigame__sequence-item--return {
+  border-color: rgba(74, 163, 255, 0.28);
+  background:
+    linear-gradient(90deg, rgba(74, 163, 255, 0.1) 0%, rgba(0, 0, 0, 0.18) 100%);
+}
+
+.route-minigame__sequence-item--urgent {
+  border-color: rgba(255, 107, 107, 0.35);
+  background:
+    linear-gradient(90deg, rgba(255, 107, 107, 0.12) 0%, rgba(0, 0, 0, 0.18) 100%);
+}
+
+.route-minigame__sequence-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.45rem;
+  height: 1.3rem;
+  padding: 0 0.32rem;
+  border-radius: 0.3rem;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #0f100f;
+  background: #8bff73;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.route-minigame__sequence-chip--depot {
+  color: #dff0ff;
+  background: rgba(20, 40, 60, 0.95);
+  border-color: rgba(74, 163, 255, 0.55);
+}
+
+.route-minigame__sequence-chip--urgent {
+  color: #fff4f4;
+  background: #b53a3a;
+  border-color: rgba(255, 180, 180, 0.55);
+}
+
+.route-minigame__sequence-rank {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #8bff73;
+}
+
+.route-minigame__sequence-empty {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.route-minigame__sequence-return {
+  color: #8bff73;
+  font-weight: 600;
+}
+
+.route-minigame__feedback {
+  flex-shrink: 0;
+  padding: 0.8rem 0.85rem;
+  border-radius: 0.5rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.45;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.route-minigame__feedback--error {
+  background:
+    linear-gradient(135deg, rgba(255, 95, 95, 0.14) 0%, rgba(255, 95, 95, 0.08) 100%);
+  border: 1px solid rgba(255, 95, 95, 0.28);
+  color: #ffb4b4;
+}
+
+.route-minigame__feedback--success {
+  background:
+    linear-gradient(135deg, rgba(139, 255, 115, 0.18) 0%, rgba(92, 199, 67, 0.1) 100%);
+  border: 1px solid rgba(139, 255, 115, 0.35);
+  color: #d8ffd0;
+}
+
+.route-minigame__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.route-minigame__button {
+  border: none;
+  border-radius: 0.45rem;
+  padding: 0.65rem 0.8rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.route-minigame__button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.route-minigame__button--ghost {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.82);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.route-minigame__button--primary {
+  grid-column: span 2;
+  background: linear-gradient(135deg, #8bff73 0%, #5cc743 55%, #4ab832 100%);
+  color: #0f100f;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 4px 14px rgba(139, 255, 115, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
